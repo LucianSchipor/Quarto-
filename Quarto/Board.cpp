@@ -21,6 +21,7 @@ std::ostream& operator<<(std::ostream& os, const Board& board)
 		for (column = 0; column < Board::kWidth; ++column) {
 			if (board[position]) {
 				os << *board[position];
+				os << ' ';
 			}
 			else
 			{

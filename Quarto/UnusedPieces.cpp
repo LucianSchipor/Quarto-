@@ -18,7 +18,7 @@ void UnusedPieces::GenerateUnusedPieces()
 
 	for (uint8_t currentPermutation = 0; currentPermutation < kMaxPermutations; ++currentPermutation) {
 		auto itPoolBegin = permutationPool.begin() + currentPermutation;
-		auto itPoolEnd = permutationPool.end() + currentPermutation * kPermutationSize;
+		auto itPoolEnd = permutationPool.begin() + currentPermutation + kPermutationSize;
 
 		do {
 			InsertPiece(Piece(
