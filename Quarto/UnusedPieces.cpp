@@ -9,6 +9,18 @@ UnusedPieces::UnusedPieces()
 	GenerateUnusedPieces();
 }
 
+Piece UnusedPieces::PickPiece(const std::string& name)
+{
+	auto node = m_pool.extract(name);
+	if (node) {
+		return std::move(node.mapped());
+	}
+	else
+	{
+		throw "Piece not found";
+	}
+}
+
 void UnusedPieces::GenerateUnusedPieces()
 {
 	const uint8_t kPermutationPoolSize = 8;
@@ -34,7 +46,19 @@ void UnusedPieces::GenerateUnusedPieces()
 void UnusedPieces::InsertPiece(const Piece& piece) {
 	std::stringstream stringStream;
 	stringStream << piece;
-	m_unusedPieces.insert(std::make_pair(stringStream.str(), piece));
+	m_pool.insert(std::make_pair(stringStream.str(), piece));
 }
 
+void UnusedPieces::EmplacePiece(Piece&& piece)
+{
+	std::stringstream stringstream;
+	stringstream << piece;
+	m_pool.insert(std::make_pair(stringstream.str(), std::forward<Piece&&>(piece)));
+}
 
+std::ostream& operator<<(std::ostream& os, const UnusedPieces& unusedPieces)
+{
+	for (const auto& [pieceName, piece] : unusedPieces.m_pool)
+		os << pieceName << " ";
+	return os;
+}
