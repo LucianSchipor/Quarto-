@@ -16,5 +16,5 @@ private:
 
 private:
 
-	std::unordered_map<std::string, Piece> m_unusedPieces;
+	std::unordered_map<std::string, Piece> m_pool;
 };
