@@ -41,6 +41,7 @@ public:
 	Color GetColor() const;
 	Height GetHeight() const;
 	Shape GetShape() const;
+	Piece Intersection(const Piece& piece) const;
 
 	friend std::ostream& operator << (std::ostream& os, const Piece& piece);
 	
