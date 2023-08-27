@@ -97,8 +97,8 @@ Piece& Piece::operator=(Piece&& other)
 std::ostream& operator<<(std::ostream& os, const Piece& piece)
 {
 	return os <<
-		static_cast<int>(piece.m_body)   -1 <<
-		static_cast<int>(piece.m_color)  -1 <<
-		static_cast<int>(piece.m_height) -1 <<
-		static_cast<int>(piece.m_shape); -1;
+		static_cast<int>(piece.m_body)	<<
+		static_cast<int>(piece.m_color) <<
+		static_cast<int>(piece.m_height)<<
+		static_cast<int>(piece.m_shape);
 }

@@ -67,10 +67,14 @@ public:
 	const std::optional<Piece>& operator[] (const Position& pos) const;
 	std::optional<Piece>& operator[] (const Position& pos);
 
+    std::pair<LineIterator, LineIterator> GetLine(uint32_t index);
+    std::pair<ColumnIterator, ColumnIterator> GetColumn(uint32_t index);
+    std::pair<MainDiagonalIterator, MainDiagonalIterator> GetMainDiagonal();
+    std::pair<SecondaryDiagonalIterator, SecondaryDiagonalIterator> GetSecondaryDiagonal();
+
+    bool IsFull() const;
 	friend std::ostream& operator <<(std::ostream& out, const Board& board);
 
 private:
-	
-
 	std::array<std::optional<Piece>, kSize> m_pieces;
 };

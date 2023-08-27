@@ -42,6 +42,7 @@ public:
 	Height GetHeight() const;
 	Shape GetShape() const;
 	Piece Intersection(const Piece& piece) const;
+	bool HasAnyFeatureSet() const;
 
 	friend std::ostream& operator << (std::ostream& os, const Piece& piece);
 	
