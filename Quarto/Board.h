@@ -64,7 +64,7 @@ public:
 
 public:
 	Board() = default;
-	const std::optional<Piece>& operator[] (const Position& pos) const;
+	const std::optional<Piece>& operator[] (const Position& pos) const; 
 	std::optional<Piece>& operator[] (const Position& pos);
 
     std::pair<LineIterator, LineIterator> GetLine(uint32_t index);

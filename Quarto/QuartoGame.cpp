@@ -20,7 +20,9 @@ void QuartoGame::Run()
     std::cin >> playerName;
     Player secondPlayer(playerName);
 
-    std::reference_wrapper<Player> pickingPlayer = firstPlayer;
+    std::reference_wrapper<Player> pickingPlayer = firstPlayer; 
+    //se comporta la fel ca ref firstPlayer dar nu detine controlul
+    
     std::reference_wrapper<Player> placingPlayer = secondPlayer;
 
     // main loop
@@ -68,6 +70,7 @@ void QuartoGame::Run()
         auto state = BoardStateChecker::Check(board, placedPosition);
         if (state == BoardStateChecker::State::Win)
         {
+            std::cout << board;
             std::cout << "We have a winner!\nCongratulations: " << pickingPlayer << std::endl;
             break;
         }

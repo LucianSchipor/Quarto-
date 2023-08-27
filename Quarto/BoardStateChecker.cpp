@@ -11,7 +11,8 @@ BoardStateChecker::State BoardStateChecker::Check(const Board& b, const Board::P
 
 	{
 		auto [first, last] = board.GetLine(lineIndex);
-		Piece piece = std::accumulate(first, last, (first++)->value(), reducer);
+		Piece piece = Piece();
+		piece = std::accumulate(first, last, (first++)->value(), reducer);
 		if (piece.HasAnyFeatureSet())
 			return State::Win;
 	}
@@ -19,6 +20,9 @@ BoardStateChecker::State BoardStateChecker::Check(const Board& b, const Board::P
 	{
 		auto [first, last] = board.GetColumn(columnIndex);
 		Piece piece = std::accumulate(first, last, (first++)->value(), reducer);
+		//reducer (returneaza intersectia din doua piese (o noua piesa, cu car comune))
+		//std::acumulate se duce pe (in cazul asta) coloana, si construieste o piesa 
+		//daca la final, piesa va avea o prop setata, inseamna ca toate piesele de pe coloana au avut acea prop => WIN
 		if (piece.HasAnyFeatureSet())
 			return State::Win;
 	}

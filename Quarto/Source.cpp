@@ -11,7 +11,7 @@ int tests()
 	Board board;
 	std::cout << "Empty board:\n" << board << std::endl;
 
-	board[{0, 0}] = std::move(piece);
+	board[{0, 0}] = std::move(piece); //muta continutul din piece in board, DAR NU IL COPIAZA
 	std::cout << "Moved piece to board:\n" << board << std::endl;
 
 	UnusedPieces unusedPieces;
